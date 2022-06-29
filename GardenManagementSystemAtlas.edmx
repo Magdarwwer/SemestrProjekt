@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GardenManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Atlas">
+          <Key>
+            <PropertyRef Name="nazwa" />
+          </Key>
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="stanowisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="podlewanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="domowa" Type="bit" Nullable="false" />
+          <Property Name="ogrodowa" Type="bit" Nullable="false" />
+          <Property Name="nawozenie" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="choroby" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Choroby">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nazwa_choroby" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="leczenie" Type="varchar" MaxLength="110" Nullable="false" />
+          <Property Name="skutki_choroby" Type="varchar" MaxLength="110" Nullable="false" />
+          <Property Name="jakich_roslin_dotyczy" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moje_rosliny">
+          <Key>
+            <PropertyRef Name="imie" />
+          </Key>
+          <Property Name="imie" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ostatnie_podlewanie" Type="date" />
+          <Property Name="ostatnie_nawozenie" Type="date" />
+          <Property Name="przebyte_choroby" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nawozenie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="data_pierwszego_nawozenia" Type="date" />
+        </EntityType>
+        <EntityType Name="Podlewanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="data_pierwszego_podlania" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Choroby__jakich___4BAC3F29' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Choroby__jakich___4BAC3F29" />-->
+        <Association Name="FK__Moje_rosl__nazwa__3D5E1FD2">
+          <End Role="Atlas" Type="Self.Atlas" Multiplicity="1" />
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Moje_rosliny">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nawozenie__imie__48CFD27E">
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="1" />
+          <End Role="Nawozenie" Type="Self.Nawozenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moje_rosliny">
+              <PropertyRef Name="imie" />
+            </Principal>
+            <Dependent Role="Nawozenie">
+              <PropertyRef Name="imie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nawozenie__nazwa__47DBAE45">
+          <End Role="Atlas" Type="Self.Atlas" Multiplicity="1" />
+          <End Role="Nawozenie" Type="Self.Nawozenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Nawozenie">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Podlewani__nazwa__4222D4EF">
+          <End Role="Atlas" Type="Self.Atlas" Multiplicity="1" />
+          <End Role="Podlewanie" Type="Self.Podlewanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Podlewanie">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Podlewanie__imie__4316F928">
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="1" />
+          <End Role="Podlewanie" Type="Self.Podlewanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moje_rosliny">
+              <PropertyRef Name="imie" />
+            </Principal>
+            <Dependent Role="Podlewanie">
+              <PropertyRef Name="imie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GardenManagementDBModelStoreContainer">
+          <EntitySet Name="Atlas" EntityType="Self.Atlas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Choroby" EntityType="Self.Choroby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moje_rosliny" EntityType="Self.Moje_rosliny" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nawozenie" EntityType="Self.Nawozenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podlewanie" EntityType="Self.Podlewanie" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Moje_rosl__nazwa__3D5E1FD2" Association="Self.FK__Moje_rosl__nazwa__3D5E1FD2">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nawozenie__imie__48CFD27E" Association="Self.FK__Nawozenie__imie__48CFD27E">
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+            <End Role="Nawozenie" EntitySet="Nawozenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nawozenie__nazwa__47DBAE45" Association="Self.FK__Nawozenie__nazwa__47DBAE45">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Nawozenie" EntitySet="Nawozenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Podlewani__nazwa__4222D4EF" Association="Self.FK__Podlewani__nazwa__4222D4EF">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Podlewanie" EntitySet="Podlewanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Podlewanie__imie__4316F928" Association="Self.FK__Podlewanie__imie__4316F928">
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+            <End Role="Podlewanie" EntitySet="Podlewanie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GardenManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Atla">
+          <Key>
+            <PropertyRef Name="nazwa" />
+          </Key>
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stanowisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="podlewanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="domowa" Type="Boolean" Nullable="false" />
+          <Property Name="ogrodowa" Type="Boolean" Nullable="false" />
+          <Property Name="nawozenie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="choroby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Moje_rosliny" Relationship="Self.FK__Moje_rosl__nazwa__3D5E1FD2" FromRole="Atlas" ToRole="Moje_rosliny" />
+          <NavigationProperty Name="Nawozenies" Relationship="Self.FK__Nawozenie__nazwa__47DBAE45" FromRole="Atlas" ToRole="Nawozenie" />
+          <NavigationProperty Name="Podlewanies" Relationship="Self.FK__Podlewani__nazwa__4222D4EF" FromRole="Atlas" ToRole="Podlewanie" />
+        </EntityType>
+        <EntityType Name="Choroby">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nazwa_choroby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="leczenie" Type="String" MaxLength="110" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="skutki_choroby" Type="String" MaxLength="110" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jakich_roslin_dotyczy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moje_rosliny">
+          <Key>
+            <PropertyRef Name="imie" />
+          </Key>
+          <Property Name="imie" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ostatnie_podlewanie" Type="DateTime" Precision="0" />
+          <Property Name="ostatnie_nawozenie" Type="DateTime" Precision="0" />
+          <Property Name="przebyte_choroby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Atla" Relationship="Self.FK__Moje_rosl__nazwa__3D5E1FD2" FromRole="Moje_rosliny" ToRole="Atlas" />
+          <NavigationProperty Name="Nawozenies" Relationship="Self.FK__Nawozenie__imie__48CFD27E" FromRole="Moje_rosliny" ToRole="Nawozenie" />
+          <NavigationProperty Name="Podlewanies" Relationship="Self.FK__Podlewanie__imie__4316F928" FromRole="Moje_rosliny" ToRole="Podlewanie" />
+        </EntityType>
+        <EntityType Name="Nawozenie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_pierwszego_nawozenia" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Atla" Relationship="Self.FK__Nawozenie__nazwa__47DBAE45" FromRole="Nawozenie" ToRole="Atlas" />
+          <NavigationProperty Name="Moje_rosliny" Relationship="Self.FK__Nawozenie__imie__48CFD27E" FromRole="Nawozenie" ToRole="Moje_rosliny" />
+        </EntityType>
+        <EntityType Name="Podlewanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_pierwszego_podlania" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Atla" Relationship="Self.FK__Podlewani__nazwa__4222D4EF" FromRole="Podlewanie" ToRole="Atlas" />
+          <NavigationProperty Name="Moje_rosliny" Relationship="Self.FK__Podlewanie__imie__4316F928" FromRole="Podlewanie" ToRole="Moje_rosliny" />
+        </EntityType>
+        <Association Name="FK__Moje_rosl__nazwa__3D5E1FD2">
+          <End Role="Atlas" Type="Self.Atla" Multiplicity="1" />
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Moje_rosliny">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nawozenie__nazwa__47DBAE45">
+          <End Role="Atlas" Type="Self.Atla" Multiplicity="1" />
+          <End Role="Nawozenie" Type="Self.Nawozenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Nawozenie">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Podlewani__nazwa__4222D4EF">
+          <End Role="Atlas" Type="Self.Atla" Multiplicity="1" />
+          <End Role="Podlewanie" Type="Self.Podlewanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atlas">
+              <PropertyRef Name="nazwa" />
+            </Principal>
+            <Dependent Role="Podlewanie">
+              <PropertyRef Name="nazwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nawozenie__imie__48CFD27E">
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="1" />
+          <End Role="Nawozenie" Type="Self.Nawozenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moje_rosliny">
+              <PropertyRef Name="imie" />
+            </Principal>
+            <Dependent Role="Nawozenie">
+              <PropertyRef Name="imie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Podlewanie__imie__4316F928">
+          <End Role="Moje_rosliny" Type="Self.Moje_rosliny" Multiplicity="1" />
+          <End Role="Podlewanie" Type="Self.Podlewanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moje_rosliny">
+              <PropertyRef Name="imie" />
+            </Principal>
+            <Dependent Role="Podlewanie">
+              <PropertyRef Name="imie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GardenManagementDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Atlas" EntityType="Self.Atla" />
+          <EntitySet Name="Chorobies" EntityType="Self.Choroby" />
+          <EntitySet Name="Moje_rosliny" EntityType="Self.Moje_rosliny" />
+          <EntitySet Name="Nawozenies" EntityType="Self.Nawozenie" />
+          <EntitySet Name="Podlewanies" EntityType="Self.Podlewanie" />
+          <AssociationSet Name="FK__Moje_rosl__nazwa__3D5E1FD2" Association="Self.FK__Moje_rosl__nazwa__3D5E1FD2">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nawozenie__nazwa__47DBAE45" Association="Self.FK__Nawozenie__nazwa__47DBAE45">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Nawozenie" EntitySet="Nawozenies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Podlewani__nazwa__4222D4EF" Association="Self.FK__Podlewani__nazwa__4222D4EF">
+            <End Role="Atlas" EntitySet="Atlas" />
+            <End Role="Podlewanie" EntitySet="Podlewanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nawozenie__imie__48CFD27E" Association="Self.FK__Nawozenie__imie__48CFD27E">
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+            <End Role="Nawozenie" EntitySet="Nawozenies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Podlewanie__imie__4316F928" Association="Self.FK__Podlewanie__imie__4316F928">
+            <End Role="Moje_rosliny" EntitySet="Moje_rosliny" />
+            <End Role="Podlewanie" EntitySet="Podlewanies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GardenManagementDBModelStoreContainer" CdmEntityContainer="GardenManagementDBEntities">
+          <EntitySetMapping Name="Atlas">
+            <EntityTypeMapping TypeName="GardenManagementDBModel.Atla">
+              <MappingFragment StoreEntitySet="Atlas">
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+                <ScalarProperty Name="podlewanie" ColumnName="podlewanie" />
+                <ScalarProperty Name="domowa" ColumnName="domowa" />
+                <ScalarProperty Name="ogrodowa" ColumnName="ogrodowa" />
+                <ScalarProperty Name="nawozenie" ColumnName="nawozenie" />
+                <ScalarProperty Name="choroby" ColumnName="choroby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chorobies">
+            <EntityTypeMapping TypeName="GardenManagementDBModel.Choroby">
+              <MappingFragment StoreEntitySet="Choroby">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nazwa_choroby" ColumnName="nazwa_choroby" />
+                <ScalarProperty Name="leczenie" ColumnName="leczenie" />
+                <ScalarProperty Name="skutki_choroby" ColumnName="skutki_choroby" />
+                <ScalarProperty Name="jakich_roslin_dotyczy" ColumnName="jakich_roslin_dotyczy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moje_rosliny">
+            <EntityTypeMapping TypeName="GardenManagementDBModel.Moje_rosliny">
+              <MappingFragment StoreEntitySet="Moje_rosliny">
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ostatnie_podlewanie" ColumnName="ostatnie_podlewanie" />
+                <ScalarProperty Name="ostatnie_nawozenie" ColumnName="ostatnie_nawozenie" />
+                <ScalarProperty Name="przebyte_choroby" ColumnName="przebyte_choroby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nawozenies">
+            <EntityTypeMapping TypeName="GardenManagementDBModel.Nawozenie">
+              <MappingFragment StoreEntitySet="Nawozenie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="data_pierwszego_nawozenia" ColumnName="data_pierwszego_nawozenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podlewanies">
+            <EntityTypeMapping TypeName="GardenManagementDBModel.Podlewanie">
+              <MappingFragment StoreEntitySet="Podlewanie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="data_pierwszego_podlania" ColumnName="data_pierwszego_podlania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

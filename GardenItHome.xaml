@@ -1,0 +1,97 @@
+﻿<Page x:Class="SemestrProjekt.GardenItHome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SemestrProjekt"
+      mc:Ignorable="d" 
+      d:DesignHeight="380" d:DesignWidth="500"
+      Title="GardenIt - Home">
+
+    <Grid Margin="10,0,10,10">
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/startScreenAppFinal4.png"  />
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+            <RowDefinition  Height="90"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="4" Click="Button_Click" Background="Transparent"  Width="80">
+            <StackPanel>
+                <Image Source="Images/AtlasButtonIconFinal.png" />
+                <TextBlock TextAlignment="Center">Atlas</TextBlock>
+            </StackPanel>
+        </Button>
+
+
+        <Button Grid.Column="1" Grid.Row="4" Click="Button_Click1" Background="Transparent"  Width="80">
+            <StackPanel>
+                <Image Source="Images/MyFlowerButtonIcon.png" />
+                <TextBlock TextAlignment="Center">My Plants</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="2" Grid.Row="4" Click="Button_Click2" Background="Transparent" Width="80">
+            <StackPanel>
+                <Image Source="Images/WateringIconFinal.png" />
+                <TextBlock TextAlignment="Center"><Run  Text="Watering"/><LineBreak/><Run/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="3" Grid.Row="4" Click="Button_Click3" Background="Transparent" Width="80">
+            <StackPanel>
+                <Image Source="Images/FertilizerButtonIcon.png" />
+                <TextBlock TextAlignment="Center"><Run Text="Fertilizer"/><LineBreak/><Run/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Grid.Resources>
+
+            <!-- Expense Report Data -->
+            <XmlDataProvider x:Key="ExpenseDataSource" XPath="Expenses">
+                <x:XData>
+                    <Expenses xmlns="">
+                        <Person Name="Mike" Department="Legal">
+                            <Expense ExpenseType="Lunch" ExpenseAmount="50" />
+                            <Expense ExpenseType="Transportation" ExpenseAmount="50" />
+                        </Person>
+                        <Person Name="Lisa" Department="Marketing">
+                            <Expense ExpenseType="Document printing"
+          ExpenseAmount="50"/>
+                            <Expense ExpenseType="Gift" ExpenseAmount="125" />
+                        </Person>
+                        <Person Name="John" Department="Engineering">
+                            <Expense ExpenseType="Magazine subscription" 
+         ExpenseAmount="50"/>
+                            <Expense ExpenseType="New machine" ExpenseAmount="600" />
+                            <Expense ExpenseType="Software" ExpenseAmount="500" />
+                        </Person>
+                        <Person Name="Mary" Department="Finance">
+                            <Expense ExpenseType="Dinner" ExpenseAmount="100" />
+                        </Person>
+                    </Expenses>
+                </x:XData>
+            </XmlDataProvider>
+
+            <!-- Name item template -->
+            <DataTemplate x:Key="nameItemTemplate">
+                <Label Content="{Binding XPath=@Name}"/>
+            </DataTemplate>
+
+        </Grid.Resources>
+        
+    </Grid>
+</Page>

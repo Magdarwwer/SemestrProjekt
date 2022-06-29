@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f10802bb3754584830abf4dd2d2e74f" Name="Diagram1">
+        <EntityTypeShape EntityType="GardenManagementDBModel.Atla" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenManagementDBModel.Choroby" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenManagementDBModel.Moje_rosliny" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenManagementDBModel.Nawozenie" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenManagementDBModel.Podlewanie" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GardenManagementDBModel.FK__Moje_rosl__nazwa__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="GardenManagementDBModel.FK__Nawozenie__nazwa__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="GardenManagementDBModel.FK__Podlewani__nazwa__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="GardenManagementDBModel.FK__Nawozenie__imie__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="GardenManagementDBModel.FK__Podlewanie__imie__4316F928" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
