@@ -27,10 +27,6 @@ namespace SemestrProjekt
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            //GardenReportPage gardenReportPage = new GardenReportPage();
-            //this.NavigationService.Navigate(gardenReportPage);
-
             // View Atlas Plant Report
             AtlasPage atlasPage = new AtlasPage();
             this.NavigationService.Navigate(atlasPage);
@@ -38,38 +34,24 @@ namespace SemestrProjekt
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            //GardenReportPage gardenReportPage = new GardenReportPage();
-            //this.NavigationService.Navigate(gardenReportPage);
-
-            // View Expense Report
-            AtlasPage atlasPage = new AtlasPage();
-            this.NavigationService.Navigate(atlasPage);
+            // View MyPlants page
+            MyPlants myplantpage = new MyPlants();
+            this.NavigationService.Navigate(myplantpage);
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            //GardenReportPage gardenReportPage = new GardenReportPage();
-            //this.NavigationService.Navigate(gardenReportPage);
-
-            // View Expense Report
-            GardenReportPage expenseReportPage = new GardenReportPage(this.peopleListBox.SelectedItem);
-            this.NavigationService.Navigate(expenseReportPage);
+            // View watering Report
+            Watering wateringPage = new Watering();
+            this.NavigationService.Navigate(wateringPage);
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            //GardenReportPage gardenReportPage = new GardenReportPage();
-            //this.NavigationService.Navigate(gardenReportPage);
-
-            // View Expense Report
-            GardenReportPage expenseReportPage = new GardenReportPage(this.peopleListBox.SelectedItem);
-            this.NavigationService.Navigate(expenseReportPage);
+            // View Fertilizing page
+            Fertilization fertilingPAge = new Fertilization();
+            this.NavigationService.Navigate(fertilingPAge);
         }
-
-
     }
 }
 

@@ -110,10 +110,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GardenReportPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,9 +144,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GardenManagementSystemAtlas.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="GardenReportPage.xaml.cs">
-      <DependentUpon>GardenReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -258,6 +251,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\MyPlantSingleReport.png" />
     <Resource Include="Images\AtlasPlantReportScreen.png" />
     <Content Include="GardenManagementDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

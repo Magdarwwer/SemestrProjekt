@@ -23,11 +23,20 @@ namespace SemestrProjekt
         public AtlasPage()
         {
             InitializeComponent();
+
+            GardenManagementDBEntities db = new GardenManagementDBEntities();
+            var Ts = from d in db.Atlas
+                     select new
+                     {
+                         Plant = d.nazwa,
+
+                     };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage(/*lista z bazy danych*/);
+            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage();
+            this.NavigationService.Navigate(singleReportPage);
         }
     }
 }
