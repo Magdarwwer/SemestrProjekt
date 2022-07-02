@@ -38,8 +38,8 @@ namespace SemestrProjekt
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Atla productItem = (Atla)AtlasGrid.SelectedItem; //Datagrid bound with ProductItem 
-            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage(ref productItem);
-                this.NavigationService.Navigate(singleReportPage);
+            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage();
+                this.NavigationService.Navigate(singleReportPage, productItem);
            
         }
 

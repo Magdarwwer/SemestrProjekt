@@ -23,6 +23,16 @@ namespace SemestrProjekt
         public MyPlants()
         {
             InitializeComponent();
+
+            GardenManagementDBEntities db = new GardenManagementDBEntities();
+            var Ts = from d in db.Moje_rosliny
+                     select new
+                     {
+                         Plant = d.nazwa,
+
+                     };
+
+            this.MyPlantGrid.ItemsSource = Ts.ToList();
         }
     }
 }

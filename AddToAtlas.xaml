@@ -24,13 +24,29 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label Content="AAAAAAAAAA" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="2" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="2" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="1" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="2" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="AAAAAAAAAA" Grid.Row="1" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Name" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Placement" Grid.Row="2" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Watering" Grid.Row="1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Indoor" Grid.Row="2" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Outdoor" Grid.Row="1" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Fertilizing" Grid.Row="2" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Diseases" Grid.Row="1" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox Content="true/false" Grid.Column="1" HorizontalAlignment="Left" Margin="86.6,14,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <CheckBox Content="true/false" Grid.Column="1" HorizontalAlignment="Left" Margin="87,110,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="88,14,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="88,44,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="88,78,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="88,42,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="88,81,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
+        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="10,41,0,0" Grid.Row="3" VerticalAlignment="Top" Width="118" Height="20"/>
+        
+        
+        <Label Content="Add to database:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold"/>
+        
+        <DataGrid Grid.Column="2" HorizontalAlignment="Left" Height="269" Margin="83.2,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="460" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+        
+        <Button Content="Button" Grid.Column="3" HorizontalAlignment="Left" Margin="70.4,41,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Page>

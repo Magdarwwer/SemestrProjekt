@@ -25,7 +25,7 @@ namespace SemestrProjekt
             InitializeComponent();
         }
 
-        public AtlasSingleReportPage(ref Atla page)
+        public AtlasSingleReportPage(Atla page)
         {
             InitializeComponent();
         }
