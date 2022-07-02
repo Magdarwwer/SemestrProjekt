@@ -30,13 +30,22 @@ namespace SemestrProjekt
                      {
                          Plant = d.nazwa,
 
-                     };
+                     }; 
+
+            this.AtlasGrid.ItemsSource = Ts.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage();
-            this.NavigationService.Navigate(singleReportPage);
+            Atla productItem = (Atla)AtlasGrid.SelectedItem; //Datagrid bound with ProductItem 
+            AtlasSingleReportPage singleReportPage = new AtlasSingleReportPage(ref productItem);
+                this.NavigationService.Navigate(singleReportPage);
+           
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

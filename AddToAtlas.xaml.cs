@@ -16,16 +16,11 @@ using System.Windows.Shapes;
 namespace SemestrProjekt
 {
     /// <summary>
-    /// Interaction logic for AtlasSingleReportPage.xaml
+    /// Interaction logic for AddToAtlas.xaml
     /// </summary>
-    public partial class AtlasSingleReportPage : Page
+    public partial class AddToAtlas : Page
     {
-        public AtlasSingleReportPage()
-        {
-            InitializeComponent();
-        }
-
-        public AtlasSingleReportPage(ref Atla page)
+        public AddToAtlas()
         {
             InitializeComponent();
         }
