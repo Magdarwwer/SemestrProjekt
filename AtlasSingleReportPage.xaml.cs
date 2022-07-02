@@ -25,9 +25,25 @@ namespace SemestrProjekt
             InitializeComponent();
         }
 
-        public AtlasSingleReportPage(Atla page)
+        public AtlasSingleReportPage(string data)
         {
             InitializeComponent();
+            Console.WriteLine("chuj");
+            Console.WriteLine(data);
+
+            GardenManagementDBEntities db = new GardenManagementDBEntities();
+            var plant = db.Atlas
+                            .Where(d => d.nazwa == data)
+                            .FirstOrDefault();
+
+            Console.WriteLine(plant.podlewanie + plant.ogrodowa + plant.stanowisko);
+
+            TxtName.Text = plant.nazwa;
+            TxtPlacement.Text = plant.stanowisko;
+            TxtWatering.Text = plant.podlewanie;
+            TxtIndoorOutdoor.Text = plant.domowa + "/" + plant.ogrodowa;
         }
+
+        
     }
 }

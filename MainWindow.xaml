@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemestrProjekt"
         mc:Ignorable="d"
-        Title="GardenIt" Height="350" Width="500" Source=" GardenItHome.xaml">
+        Title="GardenIt" Height="500" Width="500" Source=" GardenItHome.xaml">
 </NavigationWindow>
